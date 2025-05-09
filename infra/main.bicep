@@ -76,7 +76,7 @@ param bingSearchName string = ''
 param aiSearchIndexName string = 'contoso-products'
 
 @description('The name of the 35 turbo OpenAI deployment')
-param openAi_35_turbo_DeploymentName string = 'gpt-35-turbo'
+param openAi_35_turbo_DeploymentName string = 'gpt-4'
 
 
 @description('The name of the 4 OpenAI deployment')
@@ -188,7 +188,7 @@ module apiContainerApp 'app/api.bicep' = {
     identityId: managedIdentity.outputs.managedIdentityClientId
     containerAppsEnvironmentName: containerApps.outputs.environmentName
     containerRegistryName: containerApps.outputs.registryName
-    openAi_35_turbo_DeploymentName: !empty(openAi_35_turbo_DeploymentName) ? openAi_35_turbo_DeploymentName : 'gpt-35-turbo'
+    openAi_35_turbo_DeploymentName: !empty(openAi_35_turbo_DeploymentName) ? openAi_35_turbo_DeploymentName : 'gpt-4'
     openAi_4_DeploymentName: !empty(openAi_4_DeploymentName) ? openAi_4_DeploymentName : 'gpt-4'
     openAi_4_eval_DeploymentName: !empty(openAi_4_eval_DeploymentName) ? openAi_4_eval_DeploymentName : 'gpt-4-evals'
     openAiEmbeddingDeploymentName: openAiEmbeddingDeploymentName
