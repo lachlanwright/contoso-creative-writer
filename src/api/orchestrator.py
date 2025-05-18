@@ -55,7 +55,7 @@ def send_research(research_result):
     return json.dumps(("researcher", research_result))
 
 def send_products(product_result):
-    return json.dumps(("products", product_result))
+    return json.dumps(("marketing", product_result))
 
 def send_writer(full_result):
     return json.dumps(("writer", full_result))
@@ -112,7 +112,10 @@ def create(research_context, product_context, assignment_context, evaluate=False
 
     retry_count = 0
     while(str(editor_response["decision"]).lower().startswith("accept")):
-        yield ("message", f"Sending editor feedback ({retry_count + 1})...")
+        yield Message(
+            type="message",
+            message=f"Sending editor feedback ({retry_count + 1})..."
+        ).to_json_line()
 
         # Regenerate with feedback loop
         researchFeedback = editor_response.get("researchFeedback", "No Feedback")
