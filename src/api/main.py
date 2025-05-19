@@ -7,7 +7,7 @@ from prompty.core import PromptyStream, AsyncPromptyStream
 from fastapi.responses import StreamingResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
-from fastapi import FastAPI, File, UploadFile
+from fastapi import File, UploadFile
 from evaluate.evaluators import evaluate_image
 
 from orchestrator import Task, create
@@ -32,7 +32,6 @@ else:
         o.strip()
         for o in Path(Path(__file__).parent / "origins.txt").read_text().splitlines()
     ]
-    origins = ['*']
 
 app.add_middleware(
     CORSMiddleware,
